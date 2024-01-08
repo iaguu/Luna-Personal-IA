@@ -1,3 +1,24 @@
+function hello() {
+  const keys = Object.keys(saudacoes);
+  const randomKey = keys[Math.floor(Math.random() * keys.length)];
+  const randomGreeting = saudacoes[randomKey];
+  speakText(randomGreeting);
+}
+
+function agradecimento() {
+  const keys = Object.keys(agradecimentosComuns);
+  const randomKey = keys[Math.floor(Math.random() * keys.length)];
+  const randomGreeting = agradecimentosComuns[randomKey];
+  speakText(randomGreeting);
+}
+
+function cortesia() {
+  const keys = Object.keys(respostasAgradecimento);
+  const randomKey = keys[Math.floor(Math.random() * keys.length)];
+  const randomGreeting = respostasAgradecimento[randomKey];
+  speakText(randomGreeting);
+}
+
 function getHoraAtual() {
     const now = new Date();
     const hora = now.getHours();
@@ -21,6 +42,15 @@ function getDataFormatada() {
 
 async function traduzir(texto, idiomaDestino) {
   
+  idiomaDestino = mask(idiomaDestino);
+
+  for (const question in languages) {
+
+    if (idiomaDestino.includes(mask(question))) {
+        idiomaDestino = idiomaDestino[question]
+      break;
+    }
+}
   
     const apiKey = 'AIzaSyDknOL15hdGsG5ljoUcW7VSa83xF0oy8zo';
     const textoCodificado = encodeURIComponent(texto);

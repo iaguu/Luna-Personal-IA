@@ -4,7 +4,6 @@ let recognition = null;
 
 function voiceListener() {
     if (!('SpeechRecognition' in window) && !('webkitSpeechRecognition' in window)) {
-        console.log('Seu navegador não suporta reconhecimento de voz.');
         return;
     }
 
@@ -13,14 +12,25 @@ function voiceListener() {
     recognition.continuous = true;
 
     recognition.onstart = () => {
-        console.log('Reconhecimento de voz iniciado.');
+        console.log("Luna está ativa e ouvindo!");
+        hello();
     };
 
     recognition.onresult = (event) => {
         const transcript = event.results[event.results.length - 1][0].transcript.toLowerCase();
-        console.log('Texto reconhecido:', transcript);
-        checkWakeWord(mask(transcript));
+        
+        for (const word of agradecimentosComuns) {
+            if (transcript.includes(mask(word))) {
+                cortesia()
+                break;
+            }else{
+                checkWakeWord(mask(transcript));
+                break;
+            }    
+        }
     };
+
+
 
     recognition.onerror = (event) => {
         console.error('Erro de reconhecimento:', event.error);
@@ -30,17 +40,8 @@ function voiceListener() {
         .then(() => {
             recognition.start();
             isListening = true;
-            console.log('Ouvindo...');
         })
         .catch((err) => {
-            console.error('O usuário negou o acesso ao microfone:', err);
+            console.log(err);
         });
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-    const meuBotao = document.getElementById('startButton');
-
-    meuBotao.addEventListener('click', function () {
-        voiceListener();
-    });
-});

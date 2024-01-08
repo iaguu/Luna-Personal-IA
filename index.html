@@ -1,60 +1,56 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Assistente de Voz</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna - Assistente Pessoal</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffffff, #e6e6e6);
+        }
 
-    <!-- Style Principal -->
+        .buttons {
+            text-align: center;
+        }
 
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="/assets/css/home.css">
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
+        .btn:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
 
-        <!-- Script de Mask -->
-        <script src="/assets/js/mask.js"></script>
+        .btn-assistant {
+            background-color: #3498db;
+            color: #fff;
+        }
 
-       <!-- Script de Linguagens Salvas -->
-       <script src="/assets/js/languages.js"></script>
-
-        <!-- Script de Funções -->
-        <script src="/assets/js/functions.js"></script>
-
-        <!-- Script de Interações Sociais -->
-        <script src="/assets/js/interactions.js"></script>
-
-        <!-- Script de Comandos Básicos -->
-        <script src="/assets/js/commands.js"></script>
-
-        <!-- Script de WakeUp -->
-        <script src="/assets/js/wakeup.js"></script>
-
-        <!-- Script do Interpretador de Comandos -->
-        <script src="/assets/js/interpreter.js"></script>        
-        
-        <!-- Script de definição da voz -->
-        <script src="/assets/js/voice.js"></script>
-
-        <!-- Script de reconhecimento de voz -->
-        <script src="/assets/js/recognition.js"></script>
+        .btn-train {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
 </head>
-
 <body>
-
-<div>
-    <button id="startButton">Iniciar Assistente</button>
-</div>
-
-    
-<main>
-  
-
-
-</main>
-
-
-
+    <div class="buttons">
+        <a href="src/training/index.html"><button class="btn btn-train">Modo de Treinamento</button></a>
+        <a href="src/user/index.html"><button class="btn btn-assistant">Ir para o Assistente</button></a>
+    </div>
 </body>
-
-
-
 </html>

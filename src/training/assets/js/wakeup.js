@@ -10,12 +10,9 @@ const checkWakeWord = (transcript) => {
 
     for (const word of wakeWords) {
         if (transcript.includes(mask(word))) {
-
             handleCommand(mask(transcript));
-
-            console.log('Palavra de ativação detectada.');
             break;
-        }
+        }       
     }
 
 }

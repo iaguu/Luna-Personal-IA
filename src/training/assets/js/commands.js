@@ -27,6 +27,8 @@ const advancedCommands = {
         'Dividido': '/'
     },
     languageTraduction:{
-        'Traduza do': ''
+        'Traduza do': '',
+        'Traduza para': '',
+        'Traduza de': ''
     }
 }

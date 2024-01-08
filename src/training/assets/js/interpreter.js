@@ -2,7 +2,7 @@ function handleCommand(command) {
 
 // Resposta padrão.
 
-let response = 'Desculpe! ainda não aprendi essa...';
+let response = false;
 
 // Sessão de Interação Social
 
@@ -36,6 +36,22 @@ for (const question in advancedCommands.mathOperations) {
     }
 }
 
-    speakText(response);
+for (const question in advancedCommands.languageTraduction) {
+
+    if (command.includes(mask(question))) {
+
+        
+
+        break;
+    }
+}
+
+    if(response == false){
+        const audioPlayer = document.getElementById('audioPlayer');
+        audioPlayer.volume = 0.75;
+        audioPlayer.play();
+    }else{
+        speakText(response);
+    }
 
 }
