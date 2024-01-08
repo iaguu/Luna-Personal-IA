@@ -2,14 +2,14 @@ const checkWakeWord = (transcript) => {
 
     const wakeWords = [
         'luna',
-        'olá luna',
-        'hey luna',
-        'ei luna'
+        "luma",
+        'yuna',
+        'bruna'
     ];
 
 
     for (const word of wakeWords) {
-        if (transcript.includes(word)) {
+        if (transcript.includes(mask(word))) {
 
             handleCommand(mask(transcript));
 
