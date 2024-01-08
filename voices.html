@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="Insira o texto aqui.." />
+    <select></select>
+    <button>Fale!</button>
+
+<script>
+
+const synth = window.speechSynthesis; // chamada SpeechSynthesis API
+const input = document.querySelector('input'); // caixa de texto
+const selectVoices = document.querySelector('select'); // lista de vozes
+
+let voices = [];
+function getVoices() { 
+  voices = synth.getVoices(); // armazena as vozes no array
+  console.log(voices);
+  voices.forEach((voice, index) => {
+    selectVoices.add(new Option(`${voice.name} (${voice.lang})`, index)); // adiciona as informações na lista de seleção..
+  });
+}
+
+window.addEventListener('load', () => { // ao ser concluído..
+  getVoices(); // carrega as vozes..
+  if (synth.onvoiceschanged !== undefined)
+    synth.onvoiceschanged = getVoices; // checa e atualiza o evento
+});
+
+// dispara um evento ao clicar no botão!
+document.querySelector('button').addEventListener('click', () => {
+  var utter = new SpeechSynthesisUtterance(input.value); // responsável pelo que vai falar!
+  utter.voice = voices[selectVoices.value]; // define qual será a voz..
+  synth.speak(utter); // reproduz o audio!
+});
+</script>
+</body>
+</html>
